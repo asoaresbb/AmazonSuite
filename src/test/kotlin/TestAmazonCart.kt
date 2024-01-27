@@ -14,9 +14,9 @@ class TestAmazonCart {
     @Test
     fun `add to cart`() {
         AmazonHomepage(driver)
-            .`type search`("iphone case")
+            .`type search`("OTOFLY iphone case")
             .`run search`()
-            .`select sponsored`()
+            .`select first result`()
             .`add to cart`()
     }
 
