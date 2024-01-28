@@ -12,7 +12,7 @@ class AmazonDetailPage(private val driver: WebDriver) {
 
     fun `add to cart`(): AmazonDetailPage {
         driver.findElement(By.cssSelector("#add-to-cart-button")).click()
-        // Falta o assert
+        // Falta o assert, corrigir.
         return this
     }
 }
