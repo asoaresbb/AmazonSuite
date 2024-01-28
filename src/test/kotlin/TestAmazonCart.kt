@@ -11,6 +11,7 @@ class TestAmazonCart {
 
     // Notice how it's taking advantage of the Page Object Model
     // by running multiple instructions on different pages
+
     @Test
     fun `add to cart`() {
         AmazonHomepage(driver)
