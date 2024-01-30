@@ -23,7 +23,7 @@ class OlxHomepagePO(private val driver: WebDriver) {
 
     fun `type search`(text: String): OlxHomepagePO {
         WebDriverWait(driver, ofSeconds(8))
-            .pollingEvery(ofMillis(50))
+            .pollingEvery(ofMillis(200))
             .until(elementToBeClickable((name("searchBtn"))))
 
         driver.findElement(By.cssSelector("#search"))
