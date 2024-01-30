@@ -1,7 +1,15 @@
 package pages
 
+import org.openqa.selenium.By
 import org.openqa.selenium.By.ByClassName
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.ExpectedConditions.attributeContains
+import org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated
+import org.openqa.selenium.support.ui.WebDriverWait
+import java.time.Duration
+import java.time.Duration.ofMillis
+import java.time.Duration.ofSeconds
 
 class OlxSearchPagePO(private val driver: WebDriver) {
 
@@ -10,19 +18,12 @@ class OlxSearchPagePO(private val driver: WebDriver) {
     }
 
     fun `select first result`(): OlxDetailPagePO {
-        /*
-        driver.findElement(By.xpath("//div[@class='s-widget-container s-spacing-small s-widget-container-height-small celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results_1']//span[@class='a-size-medium a-color-base a-text-normal']"))
-            .click()
-
         WebDriverWait(driver, ofSeconds(8))
-            .pollingEvery(ofMillis(50))
-            .until(elementToBeClickable(cssSelector("#location-input")))
+            .pollingEvery(ofMillis(200))
+            .until(presenceOfElementLocated(ByClassName("css-qfzx1y")))
 
-         */
-
-        Thread.sleep(7000)
         driver.findElements(ByClassName("css-qfzx1y")).first().click()
-        Thread.sleep(3000)
+
         return OlxDetailPagePO(driver)
     }
 }
