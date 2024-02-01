@@ -7,7 +7,6 @@ import org.openqa.selenium.By.cssSelector
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated
 import org.openqa.selenium.support.ui.WebDriverWait
-import java.time.Duration
 import java.time.Duration.ofMillis
 import java.time.Duration.ofSeconds
 
