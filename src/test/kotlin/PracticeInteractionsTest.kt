@@ -7,7 +7,7 @@ import pages.PracticePagePO
 import java.time.Duration.ofSeconds
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PracticeSelectorsTest {
+class PracticeInteractionsTest {
 
     private val driver = WebDriverManager.chromedriver().create()
 
@@ -18,31 +18,34 @@ class PracticeSelectorsTest {
     }
 
     @Test
-    fun `select by cssSelector`() {
+    fun `input text and clear it`() {
         PracticePagePO(driver).navigateLogin()
-            .`select by css - placeholder`()
+            .`clear text`()
     }
 
     @Test
-    fun `select by xpath - visible text`() {
-        PracticePagePO(driver).navigateLogin()
-            .`select by xpath with visible text`()
-    }
-
-    @Test
-    fun `select by xpath - attribute`() {
+    fun `get title`() {
         PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by relative xpath`()
+            .`get and print the title`()
     }
 
     @Test
-    fun `select by visible linkText`() {
+    fun `get url`() {
         PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by linkText`()
-
+            .`get and print the url`()
     }
 
+    @Test
+    fun `back and forward browser`() {
+        PracticePagePO(driver).navigatePracticeSelectors()
+            .`navigate back and forward on browser`()
+    }
 
+    @Test
+    fun `refresh page`() {
+        PracticePagePO(driver).navigatePracticeSelectors()
+            .`refresh current page`()
+    }
 
     @AfterAll
     fun `close browser`() {

@@ -18,6 +18,15 @@ class PracticePagePO(private val driver: WebDriver) {
     //TODO Dados de teste não deveria estar na camada de teste? e não na de implementação.
     fun `select by css - placeholder`(): PracticePagePO {
         driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys("letskodeit@gmail.com")
+        Thread.sleep(2000)
+        return this
+    }
+
+    fun `clear text`(): PracticePagePO {
+        driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys("letskodeit@gmail.com")
+        Thread.sleep(2000)
+        driver.findElement(cssSelector("[placeholder='Email Address']")).clear()
+        Thread.sleep(2000)
         return this
     }
 
@@ -36,6 +45,32 @@ class PracticePagePO(private val driver: WebDriver) {
         return this
     }
 
+    fun `get and print the title`(): PracticePagePO {
+        val title = driver.title
+        println("Este é o título da página: $title")
+        return this
+    }
 
+    fun `get and print the url`(): PracticePagePO {
+        val currentUrl = driver.currentUrl
+        println("Estamos neste url: $currentUrl")
+        return this
+    }
+
+    fun `navigate back and forward on browser`(): PracticePagePO {
+        val navigateToHome = "https://www.letskodeit.com/home"
+        driver.navigate().to(navigateToHome)
+        Thread.sleep(1000)
+        driver.navigate().back()
+        Thread.sleep(1000)
+        driver.navigate().forward()
+        return this
+    }
+
+    fun `refresh current page`(): PracticePagePO {
+        Thread.sleep(2000)
+        driver.navigate().refresh()
+        return this
+    }
 
 }

@@ -3,11 +3,12 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import pages.PracticePagePO
+import pages.AutoDocDetailPO
+import pages.IkeaShelfDetailPO
 import java.time.Duration.ofSeconds
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PracticeSelectorsTest {
+class PracticeConditionsTest {
 
     private val driver = WebDriverManager.chromedriver().create()
 
@@ -18,31 +19,23 @@ class PracticeSelectorsTest {
     }
 
     @Test
-    fun `select by cssSelector`() {
-        PracticePagePO(driver).navigateLogin()
-            .`select by css - placeholder`()
+    fun `if stock buy it`() {
+        IkeaShelfDetailPO(driver).navigateProduct()
+            .`accept cookies`()
+            .`check stock`()
     }
 
     @Test
-    fun `select by xpath - visible text`() {
-        PracticePagePO(driver).navigateLogin()
-            .`select by xpath with visible text`()
+    fun `click on first of the group`() {
+        IkeaShelfDetailPO(driver).navigateAvailableColors()
+            .`accept cookies`()
+            .`first or null`()
     }
 
     @Test
-    fun `select by xpath - attribute`() {
-        PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by relative xpath`()
+    fun `choose a vehicle`() {
+        AutoDocDetailPO(driver).navigate()
     }
-
-    @Test
-    fun `select by visible linkText`() {
-        PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by linkText`()
-
-    }
-
-
 
     @AfterAll
     fun `close browser`() {
