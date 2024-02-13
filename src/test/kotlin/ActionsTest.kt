@@ -10,7 +10,8 @@ import java.time.Duration.ofSeconds
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ActionsTest {
 
-    private val driver = WebDriverManager.chromedriver().create()
+    private val driverManager = WebDriverManager.chromedriver()
+    private val driver = driverManager.create()
 
     @BeforeAll
     fun `maximize window`() {

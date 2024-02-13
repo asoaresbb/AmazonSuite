@@ -4,7 +4,8 @@ package pages
 import org.openqa.selenium.By.cssSelector
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.Select
-import seleniumtestinglib.locators.ByText
+import seleniumtestinglib.locators.ByRole
+import seleniumtestinglib.locators.Role.Button
 
 
 class AutoDocDetailPO(private val driver: WebDriver) {
@@ -15,7 +16,7 @@ class AutoDocDetailPO(private val driver: WebDriver) {
     }
 
     fun `accept cookies`(): AutoDocDetailPO {
-        driver.findElement(ByText("Aceitar todos os cookies", exact = false)).click()
+        driver.findElement(ByRole(Button, "Aceitar todos os cookies")).click()
         return this
     }
 

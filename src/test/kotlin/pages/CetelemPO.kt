@@ -15,7 +15,7 @@ import java.time.Duration.ofSeconds
 
 class CetelemPO(private val driver: WebDriver) {
 
-    private var js = driver as JavascriptExecutor
+    private val js = driver as JavascriptExecutor
 
     fun navigateToCetelem(): CetelemPO {
         driver.get("https://www.cetelem.pt/")
@@ -44,9 +44,10 @@ class CetelemPO(private val driver: WebDriver) {
         return this
     }
 
+    //TODO corrigir o slider com Selenium (sites com elementos genericos em vez de input)
     fun `drag the slider via js`(): CetelemPO {
         val slider = driver.findElement(cssSelector(".noUi-origin"))
-        js.executeScript("arguments[0].setAttribute('style', 'left: 25%;')", slider)
+        Actions(driver).dragAndDropBy(slider, 50, 0).perform()
 
         Thread.sleep(2000)
         return this
@@ -54,9 +55,8 @@ class CetelemPO(private val driver: WebDriver) {
 
     fun `drag the slider via selenium`(): CetelemPO {
         val slider = driver.findElement(id("input-duration-range"))
-        val move = Actions(driver)
 
-        move.dragAndDropBy(slider, 50, 0).perform()
+        Actions(driver).dragAndDropBy(slider, 50, 0).perform()
 
         Thread.sleep(2000)
         return this
