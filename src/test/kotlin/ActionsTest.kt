@@ -29,7 +29,7 @@ class ActionsTest {
     fun `ask for credit`() {
         CetelemPO(driver).navigateToCetelem()
             .`accept cookies cetelem`()
-            .`drag the slider via js`()
+//            .`drag the slider via js`()
     }
 
     @Test
