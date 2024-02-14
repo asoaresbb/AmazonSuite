@@ -15,15 +15,14 @@ class PracticePagePO(private val driver: WebDriver) {
         return this
     }
 
-    //TODO Dados de teste não deveria estar na camada de teste? e não na de implementação.
-    fun `select by css - placeholder`(): PracticePagePO {
-        driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys("letskodeit@gmail.com")
+    fun `select by css - attribute placeholder`(email: String): PracticePagePO {
+        driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys(email)
         Thread.sleep(2000)
         return this
     }
 
-    fun `clear text`(): PracticePagePO {
-        driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys("letskodeit@gmail.com")
+    fun `clear text`(email: String): PracticePagePO {
+        driver.findElement(cssSelector("[placeholder='Email Address']")).sendKeys(email)
         Thread.sleep(2000)
         driver.findElement(cssSelector("[placeholder='Email Address']")).clear()
         Thread.sleep(2000)
@@ -37,6 +36,7 @@ class PracticePagePO(private val driver: WebDriver) {
 
     fun `select by relative xpath`(): PracticePagePO {
         driver.findElement(xpath("//button[@id='openwindow']")).click()
+        Thread.sleep(2000)
         return this
     }
 

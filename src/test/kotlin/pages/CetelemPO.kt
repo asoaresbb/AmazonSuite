@@ -44,14 +44,14 @@ class CetelemPO(private val driver: WebDriver) {
         return this
     }
 
-    //TODO corrigir o slider com Selenium (sites com elementos genericos em vez de input)
-    fun `drag the slider via js`(): CetelemPO {
-        val slider = driver.findElement(cssSelector(".noUi-origin"))
-        Actions(driver).dragAndDropBy(slider, 50, 0).perform()
-
-        Thread.sleep(2000)
-        return this
-    }
+//    //TODO slider mal construído sem acessibilade nem aria role(abrir ticket jira)
+//    fun `drag the slider via js`(): CetelemPO {
+//        val slider = driver.findElement(cssSelector(".noUi-origin"))
+//        Actions(driver).dragAndDropBy(slider, 50, 0).perform()
+//
+//        Thread.sleep(2000)
+//        return this
+//    }
 
     fun `drag the slider via selenium`(): CetelemPO {
         val slider = driver.findElement(id("input-duration-range"))

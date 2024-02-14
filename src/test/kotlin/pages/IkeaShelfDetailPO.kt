@@ -27,13 +27,14 @@ class IkeaShelfDetailPO(private val driver: WebDriver) {
     }
 
     fun `check stock`(): IkeaShelfDetailPO {
-        val isStockAvailable = driver.findElement(cssSelector(".pip-btn--fluid")).isEnabled
-        if (isStockAvailable) {
-            driver.findElement(cssSelector(".pip-btn--fluid")).click()
-            println("eu cliquei la!")
-            Thread.sleep(2000)
-        } else {
-            println("Não tem stock do produto")
+        when {
+            driver.findElement(cssSelector(".pip-btn--fluid")).isEnabled -> {
+                driver.findElement(cssSelector(".pip-btn--fluid")).click()
+                println("Eu cliquei lá!")
+                Thread.sleep(2000)
+            }
+
+            else -> println("Não tem stock do produto")
         }
 
         return this

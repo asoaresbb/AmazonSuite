@@ -21,21 +21,21 @@ class AutoDocDetailPO(private val driver: WebDriver) {
     }
 
     fun `select elements from dropdown`(): AutoDocDetailPO {
-        val carDropdown = Select(driver.findElement(cssSelector("#form_maker_id")))
+        val dropdown = driver.findElement(cssSelector("#form_maker_id"))
 
-        carDropdown.selectByIndex(4)
+        Select(dropdown).selectByIndex(4)
         println("Selecionei Audi via índice")
         Thread.sleep(2000)
 
-        carDropdown.selectByValue("74")
+        Select(dropdown).selectByValue("74")
         println("Alterei para Mercedes-Benz via value")
         Thread.sleep(2000)
 
-        carDropdown.selectByVisibleText("FORD")
+        Select(dropdown).selectByVisibleText("FORD")
         println("Alterei para Ford via texto visível")
         Thread.sleep(2000)
 
-        for (option in carDropdown.options) {
+        for (option in Select(dropdown).options) {
             println(option.text)
         }
         return this

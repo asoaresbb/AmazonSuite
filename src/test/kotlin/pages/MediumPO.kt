@@ -1,8 +1,8 @@
 package pages
 
-import org.openqa.selenium.By.xpath
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.interactions.Actions
+import seleniumtestinglib.locators.ByText
 import utils.CustomSelectorMethod
 
 class MediumPO(private val driver: WebDriver) {
@@ -21,12 +21,10 @@ class MediumPO(private val driver: WebDriver) {
         return this
     }
 
-    fun `hover over an element`(): MediumPO {
-        val hoverElement = Actions(driver)
-
-        hoverElement.moveToElement(driver.findElement(xpath("//h4[.='Rachel Jamison']"))).perform()
+    fun `hover over an element`(author: String): MediumPO {
+        Actions(driver).moveToElement(driver.findElement(ByText(author))).perform()
         Thread.sleep(1000)
-        driver.findElement(xpath("//a[.='protectavolunteer.com']")).click()
+        driver.findElement(ByText("Follow")).click()
         Thread.sleep(1000)
 
         return this

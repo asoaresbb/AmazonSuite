@@ -19,7 +19,8 @@ data class CustomSelectorMethod(private val driver: WebDriver) {
             }
 
             else -> {
-                null
+                println("ola")
+                return null
             }
         }
     }

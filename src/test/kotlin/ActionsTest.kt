@@ -22,7 +22,7 @@ class ActionsTest {
     @Test
     fun `hover mouse`() {
         MediumPO(driver).navigateToMedium()
-            .`hover over an element`()
+            .`hover over an element`("Ivan Franchin")
     }
 
     @Test

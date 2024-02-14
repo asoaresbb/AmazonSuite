@@ -20,7 +20,7 @@ class PracticeInteractionsTest {
     @Test
     fun `input text and clear it`() {
         PracticePagePO(driver).navigateLogin()
-            .`clear text`()
+            .`clear text`("letskodeit@gmail.com")
     }
 
     @Test

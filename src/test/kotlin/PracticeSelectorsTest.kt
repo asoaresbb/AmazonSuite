@@ -20,7 +20,7 @@ class PracticeSelectorsTest {
     @Test
     fun `select by cssSelector`() {
         PracticePagePO(driver).navigateLogin()
-            .`select by css - placeholder`()
+            .`select by css - attribute placeholder`("letskodeit@gmail.com")
     }
 
     @Test
@@ -41,8 +41,6 @@ class PracticeSelectorsTest {
             .`select by linkText`()
 
     }
-
-
 
     @AfterAll
     fun `close browser`() {
