@@ -14,7 +14,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation("org.seleniumhq.selenium:selenium-java:4.17.0")
     implementation("io.github.bonigarcia:webdrivermanager:5.6.3")
-    implementation("com.luissoares:selenium-testing-library:3.7.1")
+    implementation("com.luissoares:selenium-testing-library:3.7.4")
 }
 
 tasks.test {

@@ -23,7 +23,8 @@ class PracticeConditionsTest {
     fun `if stock buy it`() {
         IkeaShelfDetailPO(driver).navigateProduct()
             .`accept cookies`()
-            .`check stock`()
+            .`change postal code`("2645-179")
+            .`add to basket or print text`()
     }
 
     @Test

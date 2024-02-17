@@ -1,17 +1,16 @@
 package pages
 
-import org.openqa.selenium.By.className
-import org.openqa.selenium.By.cssSelector
+import org.openqa.selenium.By.*
 import org.openqa.selenium.WebDriver
 
 
 class IkeaShelfDetailPO(private val driver: WebDriver) {
 
     fun navigateProduct(): IkeaShelfDetailPO {
-        //Sem stock:
-        //driver.get("https://www.ikea.com/pt/pt/p/persby-estante-de-parede-branco-10191264/")
         //Com stock:
-        driver.get("https://www.ikea.com/pt/pt/p/persby-estante-de-parede-pret-cast-50191262/")
+        //driver.get("https://www.ikea.com/pt/pt/p/blavingad-toalha-de-banho-padrao-de-tartarugas-azul-escuro-60534066/")
+        //Sem stock
+        driver.get("https://www.ikea.com/pt/pt/p/vagsjoen-toalhas-de-maos-banho-conj-l-s29506004/")
         return this
     }
 
@@ -26,17 +25,30 @@ class IkeaShelfDetailPO(private val driver: WebDriver) {
         return this
     }
 
-    fun `check stock`(): IkeaShelfDetailPO {
+    fun `change postal code`(postalCode: String): IkeaShelfDetailPO {
+        driver.findElement(cssSelector(".hnf-btn--small.hnf-location__postalcode .hnf-btn__label")).click()
+        driver.findElement(id("hnf-txt-postalcodepicker-postcode")).sendKeys(postalCode)
+        driver.findElement(xpath("//span[text()='Guardar']")).click()
+        Thread.sleep(1000)
+        return this
+    }
+
+    fun `add to basket or print text`(): IkeaShelfDetailPO {
+        val isStock = driver.findElement(cssSelector(".pip-btn--fluid .pip-btn__label"))
+
         when {
-            driver.findElement(cssSelector(".pip-btn--fluid")).isEnabled -> {
-                driver.findElement(cssSelector(".pip-btn--fluid")).click()
-                println("Eu cliquei lá!")
-                Thread.sleep(2000)
+            isStock.text == "Adicionar ao cesto" -> {
+                isStock.click()
+                println("Adicionei ao cesto!")
+                Thread.sleep(1000)
             }
 
-            else -> println("Não tem stock do produto")
+            else -> {
+                driver.findElement(cssSelector(".pip-store-section")).click()
+                Thread.sleep(1000)
+                println("Alerta de disponibilidade!")
+            }
         }
-
         return this
     }
 
