@@ -21,9 +21,11 @@ class PracticeConditionsTest {
 
     @Test
     fun `if stock buy it`() {
+        val zipCode = "2645-179"
         IkeaShelfDetailPO(driver).navigateProduct()
             .`accept cookies`()
-            .`change postal code`("2645-179")
+            .`change zip code`(zipCode)
+            .`assert zip code`(zipCode)
             .`add to basket or print text`()
     }
 
