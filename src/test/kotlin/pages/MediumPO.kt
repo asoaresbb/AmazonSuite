@@ -2,7 +2,7 @@ package pages
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.interactions.Actions
-import seleniumtestinglib.locators.ByText
+import seleniumtestinglib.TL.By.text
 import utils.CustomSelectorMethod
 
 class MediumPO(private val driver: WebDriver) {
@@ -22,9 +22,9 @@ class MediumPO(private val driver: WebDriver) {
     }
 
     fun `hover over an element`(author: String): MediumPO {
-        Actions(driver).moveToElement(driver.findElement(ByText(author))).perform()
+        Actions(driver).moveToElement(driver.findElement(text(author))).perform()
         Thread.sleep(1000)
-        driver.findElement(ByText("Follow")).click()
+        driver.findElement(text("Follow")).click()
         Thread.sleep(1000)
 
         return this

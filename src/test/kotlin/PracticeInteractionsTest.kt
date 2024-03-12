@@ -1,15 +1,16 @@
-import io.github.bonigarcia.wdm.WebDriverManager
+
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.openqa.selenium.chrome.ChromeDriver
 import pages.PracticePagePO
 import java.time.Duration.ofSeconds
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PracticeInteractionsTest {
 
-    private val driver = WebDriverManager.chromedriver().create()
+    private val driver = ChromeDriver()
 
     @BeforeAll
     fun `maximize window`() {

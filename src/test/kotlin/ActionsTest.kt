@@ -1,8 +1,9 @@
-import io.github.bonigarcia.wdm.WebDriverManager
+
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.openqa.selenium.chrome.ChromeDriver
 import pages.CetelemPO
 import pages.MediumPO
 import java.time.Duration.ofSeconds
@@ -10,8 +11,7 @@ import java.time.Duration.ofSeconds
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ActionsTest {
 
-    private val driverManager = WebDriverManager.chromedriver()
-    private val driver = driverManager.create()
+    private val driver = ChromeDriver()
 
     @BeforeAll
     fun `maximize window`() {
@@ -37,6 +37,12 @@ class ActionsTest {
         CetelemPO(driver).navigateToOther()
             .`accept cookies empruntis`()
             .`drag the slider via selenium`()
+    }
+
+    @Test
+    fun `upload file`() {
+        CetelemPO(driver).navigateTopdfUpload()
+            .`upload image`()
     }
 
     @AfterAll

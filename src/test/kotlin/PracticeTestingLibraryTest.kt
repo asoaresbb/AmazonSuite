@@ -1,4 +1,3 @@
-
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -6,12 +5,12 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.remote.RemoteWebDriver
-import pages.PracticePagePO
+import pages.PracticePageTestingLibraryPO
 import utils.ScreenshotOnError
 import java.time.Duration.ofSeconds
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PracticeSelectorsTest {
+class PracticeTestingLibraryTest {
 
     private val driver = ChromeDriver()
 
@@ -25,28 +24,27 @@ class PracticeSelectorsTest {
     }
 
     @Test
-    fun `select by cssSelector`() {
-        PracticePagePO(driver).navigateLogin()
-            .`select by css - attribute placeholder`("letskodeit@gmail.com")
+    fun `select by role`() {
+        PracticePageTestingLibraryPO(driver).navigatePracticeSelectors()
+            .`select by role`()
     }
 
     @Test
-    fun `select by xpath - visible text`() {
-        PracticePagePO(driver).navigateLogin()
-            .`select by xpath with visible text`()
+    fun `select by placeholderText`() {
+        PracticePageTestingLibraryPO(driver).navigateECommerce()
+            .`select by placeholderText`("emailTest@email.com")
     }
 
     @Test
-    fun `select by xpath - attribute`() {
-        PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by relative xpath`()
+    fun `select by text`() {
+        PracticePageTestingLibraryPO(driver).navigateECommerce()
+            .`select by text`()
     }
 
     @Test
-    fun `select by visible linkText`() {
-        PracticePagePO(driver).navigatePracticeSelectors()
-            .`select by linkText`()
-
+    fun `select by alternative text`() {
+        PracticePageTestingLibraryPO(driver).navigateECommerce()
+            .`select by alternative text`()
     }
 
     @AfterAll
